@@ -9,11 +9,18 @@
   "scripts": {
     "test": "make test"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ibigbug/Marlboro.git"
+  },
   "keywords": [
     "Marlboro",
     "Blog"
   ],
   "author": "ibigbug",
-  "license": "BSD"
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "commander": "*"
+  }
 }
