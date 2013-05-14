@@ -1,0 +1,16 @@
+{
+  "name": "Marlboro",
+  "version": "0.0.0",
+  "description": "A simple static blog generator, based on node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": "",
+  "keywords": [
+    "Marlboro",
+    "Blog"
+  ],
+  "author": "ibigbug",
+  "license": "BSD"
+}
