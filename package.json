@@ -1,10 +1,13 @@
 {
   "name": "Marlboro",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A simple static blog generator, based on node.js",
   "main": "index.js",
+  "bin": {
+    "marlboro": "./cli.js"
+  },
   "scripts": {
-    "test": "test"
+    "test": "make test"
   },
   "repository": "",
   "keywords": [
