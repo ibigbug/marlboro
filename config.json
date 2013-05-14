@@ -1,0 +1,12 @@
+{
+  "app_config": {
+    "content_path": "./content",
+    "deploy_path": "./deploy",
+    "theme": "default"
+  },
+
+  "site_config": {
+    "site_name": "Test",
+    "site_url": "127.0.0.1:3000"
+  }
+}
