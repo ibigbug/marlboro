@@ -7,6 +7,7 @@ function App(config){
   this.config = config;
 
   this.root_path = path.dirname(__filename);
+  this.config_file = config.app_config.config_file || 'config.json';
   this.content_path = config.app_config.content_path || './content';
   this.deploy_path = config.app_config.deploy_path || './deploy';
   this.theme = config.app_config.theme || 'default';
@@ -42,6 +43,8 @@ App.prototype.write = writer.write;
 
 App.prototype.build = function(){
   console.log('Building new blog environment');
+  console.log(process.cwd())
+  copy(path.join(this.root_path, this.config_file), '.');
   fs.mkdir(this.config.app_config.content_path, function(e){});
   fs.mkdir(this.config.app_config.deploy_path, function(e){});
 };
@@ -50,6 +53,10 @@ App.prototype.build = function(){
 /*===Helpers===*/
 function checkENV(config){
   return ( (fs.existsSync(config.app_config.content_path)) && (fs.existsSync(config.app_config.deploy_path)) );
+}
+
+function copy(src, dest){
+  fs.createReadStream(src).pipe(fs.createWriteStream(dest));
 }
 
 

@@ -1,5 +1,6 @@
 {
   "app_config": {
+    "config_file": "config.json",
     "content_path": "./content",
     "deploy_path": "./deploy",
     "theme": "default"
