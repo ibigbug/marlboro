@@ -15,5 +15,9 @@ if (commander.create) {
   app.build();
 }
 else {
-  app.init(app.read(app.write()));
+  app.init(function(){
+    app.read(function(){
+      app.write();
+    });
+  });
 }

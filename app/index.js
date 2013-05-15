@@ -6,7 +6,8 @@ var fs = require('fs'),
 function App(config){
   this.config = config;
 
-  this.root_path = path.dirname(__filename);
+  this.app_path = path.dirname(__filename);
+  this.root_path = path.resolve(this.app_path, '../');
   this.config_file = config.app_config.config_file || 'config.json';
   this.content_path = config.app_config.content_path || './content';
   this.deploy_path = config.app_config.deploy_path || './deploy';
@@ -35,7 +36,7 @@ App.prototype.init = function(callback){
     });
   }
   else {
-    callback();
+    callback(this);
   }
 }
 App.prototype.read = reader.read;
@@ -43,20 +44,23 @@ App.prototype.write = writer.write;
 
 App.prototype.build = function(){
   console.log('Building new blog environment');
-  console.log(process.cwd())
-  copy(path.join(this.root_path, this.config_file), '.');
+  copy(path.join(this.root_path, this.config_file), 
+       path.join(process.cwd(), this.config_file));
   fs.mkdir(this.config.app_config.content_path, function(e){});
   fs.mkdir(this.config.app_config.deploy_path, function(e){});
 };
 
 
 /*===Helpers===*/
+
 function checkENV(config){
   return ( (fs.existsSync(config.app_config.content_path)) && (fs.existsSync(config.app_config.deploy_path)) );
 }
 
 function copy(src, dest){
+  if (src == dest) return dest;
   fs.createReadStream(src).pipe(fs.createWriteStream(dest));
+  return dest;
 }
 
 
