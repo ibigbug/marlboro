@@ -1,12 +1,15 @@
 extends layout.jade
+include mixins
 
 block content
-  ul
-    for folder in folders
-      h3
-        = folder
-      ul
-        for post in posts
-          - if (post.folder == folder)
-            li 
-              a(href=post.perm_link, title=post.title)= post.title
+  - if (typeof tags != 'undefined')
+    ul
+      each count, tag in tags
+        li
+          mixin tagPost(posts, tag)
+
+  - else
+    ul
+      for folder in folders
+        li
+         mixin folderPost(posts, folder)

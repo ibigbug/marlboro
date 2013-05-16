@@ -8,7 +8,7 @@ var fs = require('fs'),
     log = require('../utils').log;
 
 
-var logger = log('WRITER');
+var logger = new log('WRITER');
 
 marked.setOptions({
   gfm: true,
@@ -32,12 +32,14 @@ function write(){
   var list_tpl_str = fs.readFileSync(path.join(this.template_path, 'list.jade'), {encoding: 'utf8'}),
       post_tpl_str = fs.readFileSync(path.join(this.template_path, 'post.jade'), {encoding: 'utf8'});
 
+  this.tags = calcTags(this.raw_content);
+
   var locals = {
     site_config: this.config.site_config,
-    folders: this.folders
+    folders: this.folders,
   };
 
-  //write each post
+  // write each post
   this.raw_content.forEach(function(item, index){
     item.content = marked(item.content);
     var fn = jade.compile(post_tpl_str, {filename: _this.template_path + '/post.jade'});
@@ -49,29 +51,37 @@ function write(){
   });
 
 
-  //index template
+  // index template
   var fn = jade.compile(list_tpl_str, {filename: _this.template_path + '/list.jade'});
 
-  //write site index
+
+  // write site index
   var buff = fn(update(locals, {posts: _this.raw_content}));
   fs.writeFile(path.join(_this.deploy_path, 'index.html'), buff, function(err){
     if (err) logger.error(err);
   });
 
-  //write folder index
 
+  //write folder index
   this.folders.forEach(function(folder, index){
     var buff = fn(update(locals, {posts: folderedPosts(_this.raw_content, folder)}));
     fs.writeFile(path.join(_this.deploy_path, folder, 'index.html'), buff, function(err){
       if (err) logger.error(err);
     });
   });
+
+
+  // write tag
+  var buff = fn(update(locals, {posts: _this.raw_content, tags: calcTags(_this.raw_content)}));
+  mkdir(path.join(_this.deploy_path, 'tags'));
+  fs.writeFile(path.join(_this.deploy_path, 'tags', 'index.html'), buff, function(err){
+    if (err) logger.error(err);
+  })
 }
 
 
 
 /*===Helpers===*/
-
 
 function resolveTarget(post){
   if (!fs.existsSync(post.target_folder)){
@@ -93,6 +103,23 @@ function update(obj, args){
   }
 
   return ret;
+}
+
+function calcTags(posts){
+  var tags = {};
+
+  posts.forEach(function(post, index){
+    post.tags.forEach(function(tag, index){
+      tag = tag.trim();
+      if (tag in tags){
+        tags[tag] += 1;
+      } else {
+        tags[tag] = 1;
+      }
+    });
+  });
+
+  return tags;
 }
 
 

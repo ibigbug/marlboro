@@ -1,7 +1,11 @@
 extends layout
 
 block content
-  h1.post-title
+  h1
     = item.title
-  div.post-body
+  div
     != item.content
+  div
+    for tag in item.tags
+      li
+        a(href=site_config.site_url + 'tags' + '#' + tag)= tag

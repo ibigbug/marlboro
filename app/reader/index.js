@@ -66,6 +66,14 @@ function buildPost(post_path, index){
   post.basename = path.basename(post_path, path.extname(post_path))
   post.perm_link = this.config.site_config.site_url + path.relative(this.content_path, post_path).replace(path.extname(post_path), '.html');
 
+  post.tags = post.tags.split(',').
+    filter(function(ele, index){
+      return (ele.trim() != '');
+    }).
+    map(function(ele){
+      return ele.trim();
+    });
+
   _this.raw_content[index] = post;
 }
 
