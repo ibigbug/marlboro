@@ -22,6 +22,8 @@
   "readmeFilename": "README.md",
   "dependencies": {
     "commander": "*",
-    "jade": "*"
+    "jade": "*",
+    "marked": "*",
+    "mkdirp": "*"
   }
 }

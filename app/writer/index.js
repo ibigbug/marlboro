@@ -1,4 +1,5 @@
 var fs = require('fs'),
+    mkdir = require('mkdirp'),
     path = require('path'),
     jade = require('jade'),
 
@@ -8,7 +9,7 @@ var fs = require('fs'),
 var logger = log('WRITER');
 
 
-exports.write = function(){
+function write(){
   var _this = this;
 
   this.template_path = path.resolve(this.app_path, 'themes', this.theme, '_templates');
@@ -16,8 +17,38 @@ exports.write = function(){
   var list_tpl_str = fs.readFileSync(path.join(this.template_path, 'list.jade'), {encoding: 'utf8'}),
       post_tpl_str = fs.readFileSync(path.join(this.template_path, 'post.jade'), {encoding: 'utf8'});
 
+  //write each post
   this.raw_content.forEach(function(item, index){
     var fn = jade.compile(post_tpl_str, {filename: _this.template_path + '/post.jade'});
-    console.log(fn({site_config: _this.config.site_config, item: item}));
+    var buff = fn({site_config: _this.config.site_config, item: item});
+    var target = resolveTarget(item);
+    fs.writeFile(target, buff, function(err){
+      if (err) logger.error(err);
+    });
   });
+
+
+  //write index
+  var fn = jade.compile(list_tpl_str, {filename: _this.template_path + '/list.jade'});
+  var buff = fn({site_config: _this.config.site_config, folders: _this.folders, posts: _this.raw_content});
+  fs.writeFile(path.join(this.deploy_path, 'index.html'), buff, function(err){
+    if (err) logger.error(err);
+  });
+
+
 };
+
+
+
+/*===Helpers===*/
+
+
+function resolveTarget(post){
+  if (!fs.existsSync(post.target_folder)){
+    mkdir.sync(post.target_folder);
+  }
+
+  return path.join(post.target_folder, post.basename) + '.html';
+}
+
+exports.write = write;

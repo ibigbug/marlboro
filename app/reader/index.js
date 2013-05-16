@@ -8,7 +8,7 @@ var logger = new log('READER');
 function read(callback){
   var _this = this;
 
-  var content_abspath = path.join(this.root_path, this.content_path),
+  var content_abspath = path.resolve(this.work_path, this.content_path),
       content_index = path.resolve(content_abspath).split(path.sep).pop();
 
   walk(content_abspath, function(tree){
@@ -55,13 +55,15 @@ function buildPost(post_path, index){
     var name = metas[key].split(':')[0],
         value = metas[key].split(':')[1];
     if (name){
-      post[name] = value;
+      post[name.trim()] = value.trim();
     }else continue;
   }
   post.content = content;
 
   post.abs_path = post_path;
-  post.parent_folder = path.dirname(post_path).split(path.sep).pop();
+  post.target_folder = path.join(path.resolve(this.deploy_path), path.relative(this.content_path, path.dirname(post_path)));
+  post.basename = path.basename(post_path, path.extname(post_path))
+  post.perm_link = path.relative(this.content_path, post_path).replace(path.extname(post_path), '.html');
 
   _this.raw_content[index] = post;
 }
