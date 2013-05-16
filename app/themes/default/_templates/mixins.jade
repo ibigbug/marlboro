@@ -1,0 +1,7 @@
+mixin nav
+  ul
+    li
+      a(href=site_config.site_url) Home
+    for folder in folders
+      li
+        a(href=site_config.site_url + folder)= folder

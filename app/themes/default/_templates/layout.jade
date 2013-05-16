@@ -1,9 +1,11 @@
 !!! 5
+include mixins
 html
   head
     title #{site_config.site_name}
   body
     header#header
+      mixin nav
     div#wrapper
       block content
     footer#footer

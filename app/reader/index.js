@@ -64,7 +64,7 @@ function buildPost(post_path, index){
   post.target_folder = path.join(path.resolve(this.deploy_path), path.relative(this.content_path, path.dirname(post_path)));
   post.folder = path.relative(this.deploy_path, post.target_folder);
   post.basename = path.basename(post_path, path.extname(post_path))
-  post.perm_link = path.relative(this.content_path, post_path).replace(path.extname(post_path), '.html');
+  post.perm_link = this.config.site_config.site_url + path.relative(this.content_path, post_path).replace(path.extname(post_path), '.html');
 
   _this.raw_content[index] = post;
 }

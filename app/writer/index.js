@@ -32,11 +32,16 @@ function write(){
   var list_tpl_str = fs.readFileSync(path.join(this.template_path, 'list.jade'), {encoding: 'utf8'}),
       post_tpl_str = fs.readFileSync(path.join(this.template_path, 'post.jade'), {encoding: 'utf8'});
 
+  var locals = {
+    site_config: this.config.site_config,
+    folders: this.folders
+  };
+
   //write each post
   this.raw_content.forEach(function(item, index){
     item.content = marked(item.content);
     var fn = jade.compile(post_tpl_str, {filename: _this.template_path + '/post.jade'});
-    var buff = fn({site_config: _this.config.site_config, item: item});
+    var buff = fn(update(locals, {item: item}));
     var target = resolveTarget(item);
     fs.writeFile(target, buff, function(err){
       if (err) logger.error(err);
@@ -44,14 +49,23 @@ function write(){
   });
 
 
-  //write index
+  //index template
   var fn = jade.compile(list_tpl_str, {filename: _this.template_path + '/list.jade'});
-  var buff = fn({site_config: _this.config.site_config, folders: _this.folders, posts: _this.raw_content});
-  fs.writeFile(path.join(this.deploy_path, 'index.html'), buff, function(err){
+
+  //write site index
+  var buff = fn(update(locals, {posts: _this.raw_content}));
+  fs.writeFile(path.join(_this.deploy_path, 'index.html'), buff, function(err){
     if (err) logger.error(err);
   });
 
+  //write folder index
 
+  this.folders.forEach(function(folder, index){
+    var buff = fn(update(locals, {posts: folderedPosts(_this.raw_content, folder)}));
+    fs.writeFile(path.join(_this.deploy_path, folder, 'index.html'), buff, function(err){
+      if (err) logger.error(err);
+    });
+  });
 }
 
 
@@ -65,6 +79,29 @@ function resolveTarget(post){
   }
 
   return path.join(post.target_folder, post.basename) + '.html';
+}
+
+function update(obj, args){
+  var ret = {};
+
+  for (var key in obj){ // make a copy
+    if (obj.hasOwnProperty(key)) ret[key] = obj[key];
+  }
+
+  for (key in args){ // make update
+    ret[key] = args[key];
+  }
+
+  return ret;
+}
+
+
+function folderedPosts(posts, folder){
+  var ret = [];
+  for (var index in posts){
+    if (posts[index].folder == folder) ret.push(posts[index]);
+  }
+  return ret;
 }
 
 exports.write = write;
