@@ -2,11 +2,26 @@ var fs = require('fs'),
     mkdir = require('mkdirp'),
     path = require('path'),
     jade = require('jade'),
+    marked = require('marked'),
+    highlight = require('highlight').Highlight,
 
     log = require('../utils').log;
 
 
 var logger = log('WRITER');
+
+marked.setOptions({
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: true,
+  smartLists: true,
+  langPrefix: 'lang-',
+  highlight: function(code, lang) {
+    return highlight(code);
+  }
+});
 
 
 function write(){
@@ -19,6 +34,7 @@ function write(){
 
   //write each post
   this.raw_content.forEach(function(item, index){
+    item.content = marked(item.content);
     var fn = jade.compile(post_tpl_str, {filename: _this.template_path + '/post.jade'});
     var buff = fn({site_config: _this.config.site_config, item: item});
     var target = resolveTarget(item);
@@ -36,7 +52,7 @@ function write(){
   });
 
 
-};
+}
 
 
 

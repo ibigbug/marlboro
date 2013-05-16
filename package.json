@@ -24,6 +24,7 @@
     "commander": "*",
     "jade": "*",
     "marked": "*",
+    "highlight": "*",
     "mkdirp": "*"
   }
 }
