@@ -21,10 +21,11 @@
   "license": "BSD",
   "readmeFilename": "README.md",
   "dependencies": {
-    "commander": "*",
-    "jade": "*",
-    "marked": "*",
-    "highlight": "*",
-    "mkdirp": "*"
+    "commander": "~1.1.1",
+    "jade": "~0.30.0",
+    "marked": "~0.2.8",
+    "highlight": "~0.2.3",
+    "mkdirp": "~0.3.5",
+    "fs-extra": "~0.6.1"
   }
 }

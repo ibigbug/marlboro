@@ -1,4 +1,4 @@
-var fs = require('fs'),
+var fs = require('fs-extra'),
     mkdir = require('mkdirp'),
     path = require('path'),
     jade = require('jade'),
@@ -77,6 +77,13 @@ function write(){
   fs.writeFile(path.join(_this.deploy_path, 'tags', 'index.html'), buff, function(err){
     if (err) logger.error(err);
   })
+
+
+  // copy static
+  fs.copy(path.join(this.app_path, 'themes', this.theme, '_static'), 
+          path.join(this.deploy_path, 'static'), function(err){
+    if (err) logger.error(err);
+  });
 }
 
 

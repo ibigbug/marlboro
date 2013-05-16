@@ -3,7 +3,8 @@ include mixins
 html
   head
     title #{site_config.site_name}
-    link(rel='stylesheed', type='text/css', href='site.css')
+    link(rel='stylesheet', type='text/css', href=site_config.site_url + 'static/site.css')
+    link(rel='stylesheet', type='text/css', href=site_config.site_url + 'static/typo.css')
   body
     header#header
       mixin nav
