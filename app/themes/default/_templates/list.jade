@@ -7,5 +7,6 @@ block content
         = folder
       ul
         for post in posts
-          li 
-            a(href=post.perm_link, title=post.title)= post.title
+          - if (post.folder == folder)
+            li 
+              a(href=post.perm_link, title=post.title)= post.title
