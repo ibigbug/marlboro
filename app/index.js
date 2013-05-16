@@ -24,14 +24,14 @@ function App(config){
 App.prototype.init = function(callback){
   var _this = this;
 
-  if ( checkENV(this.config) == false ) {
+  if ( checkENV(this.config) === false ) {
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
-    console.log('Build a fresh blog environment? Y/n')
+    console.log('Build a fresh blog environment? Y/n');
     process.stdin.on('data', function(yes){
       yes = yes.replace('\n', '');
       if (yes == 'n'){
-        process.exit()
+        process.exit();
       }
       _this.build();
       process.exit();
@@ -40,7 +40,7 @@ App.prototype.init = function(callback){
   else {
     callback(this);
   }
-}
+};
 App.prototype.read = reader.read;
 App.prototype.write = writer.write;
 
@@ -61,7 +61,7 @@ function checkENV(config){
 
 function copy(src, dest){
   if (src == dest) return dest;
-  fs.createReadStream(src).pipe(fs.createWriteStream(dest));
+  fs.writeFileSync(dest, fs.readFileSync(src));
   return dest;
 }
 
