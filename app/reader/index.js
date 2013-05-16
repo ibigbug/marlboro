@@ -58,6 +58,8 @@ function buildPost(post_path, index){
       post[name] = value;
     }else continue;
   }
+  post.content = content;
+
   post.abs_path = post_path;
   post.parent_folder = path.dirname(post_path).split(path.sep).pop();
 

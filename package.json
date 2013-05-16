@@ -21,6 +21,7 @@
   "license": "BSD",
   "readmeFilename": "README.md",
   "dependencies": {
-    "commander": "*"
+    "commander": "*",
+    "jade": "*"
   }
 }
