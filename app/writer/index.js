@@ -37,6 +37,7 @@ function write(){
   var locals = {
     site_config: this.config.site_config,
     folders: this.folders,
+    sidebar_tags: this.tags
   };
 
   // write each post
