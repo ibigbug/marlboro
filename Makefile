@@ -1,5 +1,5 @@
 
-DEPLOY_DIR = './content'
+DEPLOY_DIR = './deploy'
 
 all: static build server
 
