@@ -1,0 +1,9 @@
+- function fontSize(count){return 12 + parseInt(2 * Math.log(count)) + 'px'}
+
+h3
+  | Tags
+div.sidebar_tags
+  ul
+    each count, tags in sidebar_tags
+      li
+        a(href=site_config.site_url + 'tags#' + tag, style="font-size:" + fontSize(count))= tag

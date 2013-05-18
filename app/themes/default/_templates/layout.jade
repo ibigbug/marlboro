@@ -9,6 +9,11 @@ html
     header#header
       mixin nav
     div#wrapper
-      block content
-    footer#footer
-      p some footer
+      div#inner-wrapper
+        block content
+        include sidebar
+    div#footer
+      footer#inner-footer
+        small
+          | Powered by 
+          a(href="https://github.com/ibigbug/marlboro") Marlboro

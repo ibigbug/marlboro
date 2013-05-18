@@ -1,11 +1,16 @@
 extends layout
 
 block content
-  h1
+  h1.title
     = item.title
+  div.meta
+    small
+      | Published on #{item.date} under 
+      a(href=site_config.site_url + item.folder, class="title")= folder
   div.typo
     != item.content
-  div
+  div.tags
+    | Tagged in :
     for tag in item.tags
-      li
-        a(href=site_config.site_url + 'tags' + '#' + tag)= tag
+      a(href=site_config.site_url + 'tags' + '#' + tag)
+        | \##{tag}
