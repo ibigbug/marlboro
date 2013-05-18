@@ -14,5 +14,9 @@ log.prototype.error = function(msg){
   console.log('ERROR: ' + this.name + ': ' + msg);
 }
 
+log.prototype.info = function(msg){
+  console.log('INFO: ' + this.name + ': ' + msg);
+}
+
 
 exports.log = log;
