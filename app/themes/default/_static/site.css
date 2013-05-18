@@ -35,4 +35,11 @@ input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit
 button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
 textarea{overflow:auto;vertical-align:top;}
 table{border-collapse:collapse;border-spacing:0;}
-html body header#header{color:red;}
+.title{text-transform:capitalize;}
+html{width:100%;font-family:'Quando',serif;}html body{text-align:center;}html body div#header{background-color:#eee;padding:10px 0;box-shadow:0 0 1px;}html body div#header ul{max-width:650px;margin:0 auto;text-align:left;}html body div#header ul li{display:inline-block;margin:0 auto;}
+html body div#wrapper{width:100%;border-top:1px solid #eee;border-bottom:1px solid #eee;margin:0 auto;margin-top:3px;}html body div#wrapper div#inner-wrapper{max-width:50%;margin:0 auto;text-align:left;}html body div#wrapper div#inner-wrapper div#main{display:inline-block;padding:10px 5px;padding:1% 1px;width:80%;border-right:1px solid #eee;}html body div#wrapper div#inner-wrapper div#main small{margin-left:1%;}
+html body div#wrapper div#inner-wrapper div#main .meta{border-top:thin solid #eee;border-bottom:thin solid #eee;}
+html body div#wrapper div#inner-wrapper div#main .body{margin-top:5%;}
+html body div#wrapper div#inner-wrapper div#main .tags{margin-top:10%;border-top:double #eee;border-bottom:double #eee;}
+html body div#wrapper div#inner-wrapper div#sidebar{display:inline-block;vertical-align:top;padding:2%;}html body div#wrapper div#inner-wrapper div#sidebar .sidevar-tags{margin-left:30%;}
+html body div#footer{padding-top:1%;}

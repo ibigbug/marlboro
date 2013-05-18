@@ -17,7 +17,7 @@ if (commander.create) {
   app.build();
 }
 else {
-  log.info('Startin');
+  log.info('Starting');
   app.init(function(){
     log.info('Reading');
     app.read(function(){
