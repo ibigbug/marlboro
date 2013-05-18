@@ -16,7 +16,8 @@ function read(callback){
     _this.raw_content.forEach(function(post_path, index){
       buildPost.call(_this, post_path, index);
     });
-    callback();
+    if (callback) {callback();}
+    return _this.raw_content;
   });
 }
 
