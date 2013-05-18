@@ -3,6 +3,8 @@ require('should');
 var Marlboro = require('../app/').App,
     config = require('../config');
 
+config.app_config.content_path = './test/content';
+
 var Application = new Marlboro(config);
 
 Application.read();
