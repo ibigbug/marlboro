@@ -4,7 +4,8 @@ var path = require('path'),
     fs = require('fs'),
     commander = require('commander'),
     Application = require('./index').App,
-    logger = require('./app/utils').log;
+    logger = require('./app/utils').log,
+    config = require(resolveConf());
 
 var app = new Application(config),
     log = new logger('Marlboro');

@@ -1,6 +1,6 @@
 {
   "name": "marlboro",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple static blog generator, based on node.js",
   "main": "index.js",
   "bin": {
