@@ -39,7 +39,7 @@ function pullTree(tree){
 function buildPost(post_path, index){
   var _this = this;
   var post = {};
-  var data = fs.readFileSync(post_path, {encoding: 'utf8'});
+  var data = fs.readFileSync(post_path).toString();
     
   var meta, content;
   var all = data.split('======');
