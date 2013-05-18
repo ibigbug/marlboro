@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
-var commander = require('commander'),
+var path = require('path'),
+    fs = require('fs'),
+    commander = require('commander'),
     Application = require('./index').App,
     logger = require('./app/utils').log;
-    config = require('./config');
 
 var app = new Application(config),
     log = new logger('Marlboro');
@@ -26,4 +27,13 @@ else {
       log.info('Finished');
     });
   });
+}
+
+
+/*===Helpers===*/
+
+function resolveConf(){
+  var config_file = path.join(process.cwd(), 'config.json');
+  if (fs.existsSync(config_file)) return config_file;
+  return './config';
 }
