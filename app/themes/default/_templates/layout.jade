@@ -5,14 +5,16 @@ html
     title #{site_config.site_name}
     link(rel='stylesheet', type='text/css', href=site_config.site_url + 'static/site.css')
     link(rel='stylesheet', type='text/css', href=site_config.site_url + 'static/typo.css')
-    link(href='http://fonts.googleapis.com/css?family=Quando&subset=latin,latin-ext', rel='stylesheet', type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Noto+Serif', rel='stylesheet', type='text/css')
   body
-    header#header
+    div#header
       mixin nav
     div#wrapper
       div#inner-wrapper
-        block content
-        include sidebar
+        div#main
+          block content
+        div#sidebar
+          include tags
     div#footer
       footer#inner-footer
         small

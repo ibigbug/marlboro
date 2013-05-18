@@ -203,7 +203,9 @@ figcaption {
 h1, h2, h3, h4, h5, h6{
 	font-weight: 500;
 	font-weight: 800\9;
-    font-family: Helvetica Neue,Hiragino Sans GB,Microsoft Yahei, WenQuanYi Micro Hei,sans-serif;
+    /* instead of google font api
+     * font-family: Helvetica Neue,Hiragino Sans GB,Microsoft Yahei, WenQuanYi Micro Hei,sans-serif; */
+
 	color:#333;
 }
 

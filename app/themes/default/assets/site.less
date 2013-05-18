@@ -5,27 +5,41 @@
 .title {
     text-transform: capitalize;
 }
+::selection {
+    background-color: #dc143c;
+    text-shadow: none;
+    color: #fff;
+}
 
 html{
     width: 100%;
-    font-family: 'Quando', serif;
+
 
     body {
 	text-align: center;
+	font-family: 'Noto Serif', serif;
 
 	div#header{
 	    background-color: #eee;
 	    padding: 10px 0;
-	    box-shadow: 0 0 1px;
-
+	    opacity: 0.9;
+	    
 	    ul {
+		min-width: 55%;
 		max-width: 650px;
 		margin: 0 auto;
 		text-align: left;
 
 		li {
 		    display: inline-block;
-		    margin: 0 auto;
+		    margin: 0 2%;
+
+		    a {
+			color: @linkColor;
+			font-size: 16px;
+			text-shadow: 0 0 1px;
+			.title();
+		    }
 		}
 	    }
 	}
@@ -34,10 +48,11 @@ html{
 	    border-top: 1px solid #eee;
 	    border-bottom: 1px solid #eee;
 	    margin: 0 auto;
-	    margin-top: 3px;
+	    margin-top: 3%;
 
 	    div#inner-wrapper {
-		max-width: 50%;
+		min-width: 50%;
+		max-width: 650px;
 		margin: 0 auto;
 		text-align: left;
 
@@ -47,15 +62,21 @@ html{
 		    padding:1% 1px;
 		    width: 80%;
 		    border-right: 1px solid #eee;
+		    padding-bottom: 10%;
 
 		    small {
 			margin-left: 1%;
+		    }
+
+		    a {
+			color: @linkColor;
 		    }
 
 		    // post 
 		    .meta {
 			border-top: thin solid #eee;
 			border-bottom: thin solid #eee;
+			margin-top: 2%;
 		    }
 
 		    .body {
@@ -72,10 +93,24 @@ html{
 		div#sidebar {
 		    display: inline-block;
 		    vertical-align: top;
-		    padding: 2%;
+		    width: 19%;
+		    box-sizing: border-box;
 
-		    .sidevar-tags {
-			margin-left: 30%;
+		    h2 {
+			margin-top: 5%;
+			margin-left: 8%;
+		    }
+
+		    .sidebar-tags {
+			margin-left: 20%;
+
+			li {
+			    margin-left: 10%;
+			    list-style-type: square;
+			    a {
+				color: @linkColor;
+			    }
+			}
 		    }
 		}
 	    }
@@ -83,6 +118,9 @@ html{
 
 	div#footer{
 	    padding-top: 1%;
+	    a {
+		color: @linkColor;
+	    }
 	}
     }
 }

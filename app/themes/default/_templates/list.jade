@@ -3,17 +3,17 @@ include mixins
 
 block content
   - if (typeof tags != 'undefined')
-    h3.title
-      | Archives
-      ul
-        each count, tag in tags
-          li
-            mixin tagPost(posts, tag)
+    h1
+      | Tags
+    ul
+      each count, tag in tags
+        li
+          mixin tagPost(posts, tag)
 
   - else
-    h3.title
-      | Tags
-      ul
-        for folder in folders
-          li
-            mixin folderPost(posts, folder)
+    h1
+      | Archives
+    ul
+      for folder in folders
+        li
+          mixin folderPost(posts, folder)
