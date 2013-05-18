@@ -4,6 +4,10 @@
 
 Marlboro is lightweight static blog generator based on NodeJS, brother of [SBlog](https://github.com/ibigbug/sblog)
 
+## Install
+
+`npm install -g marlboro`
+
 ## Usage
 
 <pre>
@@ -25,6 +29,8 @@ Marlboro is lightweight static blog generator based on NodeJS, brother of [SBlog
     (function(){})(); // Source Code Here;
     ```
 </pre>
+
+[View Online Demo](http://blog.xiaoba.me/marlboro)
 
 
 ## TODO
