@@ -1,5 +1,7 @@
 # Marlboro
 
+[![Build Status](https://travis-ci.org/ibigbug/marlboro.png?branch=master)](https://travis-ci.org/ibigbug/marlboro)
+
 ## Intro
 
 Marlboro is lightweight static blog generator based on NodeJS, brother of [SBlog](https://github.com/ibigbug/sblog)
