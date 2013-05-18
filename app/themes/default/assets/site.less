@@ -1,14 +1,88 @@
 @import "normalize.less";
 
-html{
-  body {
-    header#header{
-      color: red;
-    }
-    div#wrapper{
-    }
+@linkColor: #63c900;
 
-    footer#footer{
+.title {
+    text-transform: capitalize;
+}
+
+html{
+    width: 100%;
+    font-family: 'Quando', serif;
+
+    body {
+	text-align: center;
+
+	div#header{
+	    background-color: #eee;
+	    padding: 10px 0;
+	    box-shadow: 0 0 1px;
+
+	    ul {
+		max-width: 650px;
+		margin: 0 auto;
+		text-align: left;
+
+		li {
+		    display: inline-block;
+		    margin: 0 auto;
+		}
+	    }
+	}
+	div#wrapper{
+	    width: 100%;
+	    border-top: 1px solid #eee;
+	    border-bottom: 1px solid #eee;
+	    margin: 0 auto;
+	    margin-top: 3px;
+
+	    div#inner-wrapper {
+		max-width: 50%;
+		margin: 0 auto;
+		text-align: left;
+
+		div#main {
+		    display: inline-block;
+		    padding: 10px 5px;
+		    padding:1% 1px;
+		    width: 80%;
+		    border-right: 1px solid #eee;
+
+		    small {
+			margin-left: 1%;
+		    }
+
+		    // post 
+		    .meta {
+			border-top: thin solid #eee;
+			border-bottom: thin solid #eee;
+		    }
+
+		    .body {
+			margin-top: 5%;
+		    }
+
+		    .tags {
+			margin-top: 10%;
+			border-top: double #eee;
+			border-bottom: double #eee;
+		    }
+		}
+
+		div#sidebar {
+		    display: inline-block;
+		    vertical-align: top;
+		    padding: 2%;
+
+		    .sidevar-tags {
+			margin-left: 30%;
+		    }
+		}
+	    }
+	}
+
+	div#footer{
+	    padding-top: 1%;
+	}
     }
-  }
 }
