@@ -37,7 +37,7 @@ textarea{overflow:auto;vertical-align:top;}
 table{border-collapse:collapse;border-spacing:0;}
 .title{text-transform:capitalize;}
 ::selection{background-color:#dc143c;text-shadow:none;color:#fff;}
-html{width:100%;}html body{text-align:center;font-family:'Noto Serif',serif;}html body div#header{background-color:#eee;padding:10px 0;opacity:0.9;}html body div#header ul{min-width:55%;max-width:650px;margin:0 auto;text-align:left;}html body div#header ul li{display:inline-block;margin:0 2%;}html body div#header ul li a{color:#63c900;font-size:16px;text-shadow:0 0 1px;text-transform:capitalize;}
+html{width:100%;}html body{text-align:center;font-family:'Noto Serif',serif;}html body div#header{border-bottom:double #eee;padding:10px 0;opacity:0.9;}html body div#header ul{min-width:55%;max-width:650px;margin:0 auto;text-align:left;}html body div#header ul li{display:inline-block;margin:0 2%;}html body div#header ul li a{color:#63c900;font-size:16px;text-shadow:0 0 1px;text-transform:capitalize;}
 html body div#wrapper{width:100%;border-top:1px solid #eee;border-bottom:1px solid #eee;margin:0 auto;margin-top:3%;}html body div#wrapper div#inner-wrapper{min-width:50%;max-width:650px;margin:0 auto;text-align:left;}html body div#wrapper div#inner-wrapper div#main{display:inline-block;padding:10px 5px;padding:1% 1px;width:80%;border-right:1px solid #eee;padding-bottom:10%;}html body div#wrapper div#inner-wrapper div#main small{margin-left:1%;}
 html body div#wrapper div#inner-wrapper div#main a{color:#63c900;}
 html body div#wrapper div#inner-wrapper div#main .meta{border-top:thin solid #eee;border-bottom:thin solid #eee;margin-top:2%;}
