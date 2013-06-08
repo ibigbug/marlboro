@@ -29,6 +29,7 @@ SimpleHTTPServer.prototype.run = function(){
       if (fs.statSync(filename).isDirectory()) filename += 'index.html';
 
       fs.readFile(filename, 'binary', function(err, file){
+        console.log('GET: ' + filename);
         if (err){
           res.writeHead(500, {'Content-Type': 'text/plain'});
           res.write(err + '\n');
@@ -46,8 +47,3 @@ SimpleHTTPServer.prototype.run = function(){
 
 
 exports.SimpleHTTPServer = SimpleHTTPServer;
-
-if(process.argv[1]){
-  var server = new SimpleHTTPServer();
-  server.run();
-}

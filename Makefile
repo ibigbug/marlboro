@@ -13,4 +13,4 @@ build:
 	./cli.js
 
 server:
-	cd $(DEPLOY_DIR) && python -m SimpleHTTPServer
+	cd $(DEPLOY_DIR) && ./cli.js -s
