@@ -1,5 +1,8 @@
 var fs = require('fs'),
     path = require('path'),
+
+    Post = require('../model/post').Post,
+
     walk = require('./utils').walk;
     log = require('../utils').log;
 
@@ -38,7 +41,8 @@ function pullTree(tree){
 
 function buildPost(post_path, index){
   var _this = this;
-  var post = {};
+  var post = new Post();
+
   var data = fs.readFileSync(post_path).toString();
     
   var meta, content;
@@ -46,7 +50,7 @@ function buildPost(post_path, index){
   meta = all[1];
   content = all[2];
 
-  if (meta == undefined || content == undefined) {
+  if (meta === undefined || content === undefined) {
     logger.warning('Bad Post :' + post_path);
     return;
   }
@@ -56,24 +60,24 @@ function buildPost(post_path, index){
     var name = metas[key].split(':')[0],
         value = metas[key].split(':')[1];
     if (name){
-      post[name.trim()] = value.trim();
+      post.set(name.trim(), value.trim());
     }else continue;
   }
-  post.content = content;
+  post.set('content', content);
 
-  post.abs_path = post_path;
-  post.target_folder = path.join(path.resolve(this.deploy_path), path.relative(this.content_path, path.dirname(post_path)));
-  post.folder = path.relative(this.deploy_path, post.target_folder);
-  post.basename = path.basename(post_path, path.extname(post_path))
-  post.perm_link = this.config.site_config.site_url + path.relative(this.content_path, post_path).replace(path.extname(post_path), '.html');
+  post.set('abs_path', post_path);
+  post.set('target_folder', path.join(path.resolve(this.deploy_path), path.relative(this.content_path, path.dirname(post_path))));
+  post.set('folder', path.relative(this.deploy_path, post.target_folder));
+  post.set('basename', path.basename(post_path, path.extname(post_path)));
+  post.set('perm_link', this.config.site_config.site_url + path.relative(this.content_path, post_path).replace(path.extname(post_path), '.html'));
 
-  post.tags = post.tags.split(',').
+  post.set('tags', post.tags.split(',').
     filter(function(ele, index){
-      return (ele.trim() != '');
+      return (ele.trim() !== '');
     }).
     map(function(ele){
       return ele.trim();
-    });
+    }));
 
   _this.raw_content[index] = post;
 }
