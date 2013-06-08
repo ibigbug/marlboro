@@ -20,6 +20,7 @@ SimpleHTTPServer.prototype.run = function(){
 
     fs.exists(filename, function(exists){
       if(!exists){
+        console.log('GET 404: ', filename);
         res.writeHead(404, {'Content-Type': 'text/plain'});
         res.write('404 not found\n');
         res.end();
@@ -29,12 +30,11 @@ SimpleHTTPServer.prototype.run = function(){
       if (fs.statSync(filename).isDirectory()) filename += 'index.html';
 
       fs.readFile(filename, 'binary', function(err, file){
-        console.log('GET: ' + filename);
+        console.log('GET 200: ' + filename);
         if (err){
           res.writeHead(500, {'Content-Type': 'text/plain'});
           res.write(err + '\n');
           res.end();
-          return;
         }
 
         res.writeHead(200);

@@ -3,7 +3,7 @@ DEPLOY_DIR = './deploy'
 
 all: static build server
 
-test-unit:
+test:
 	@node ./test/app.test.js
 
 static:
@@ -13,4 +13,6 @@ build:
 	./cli.js
 
 server:
-	cd $(DEPLOY_DIR) && ./cli.js -s
+	./cli.js -s
+
+.PHONY: test
