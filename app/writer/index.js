@@ -73,11 +73,10 @@ function write(){
 
 
   // write tag
-  var buff = fn(update(locals, {posts: _this.raw_content, tags: calcTags(_this.raw_content)}));
-  mkdir(path.join(_this.deploy_path, 'tags'));
+  buff = fn(update(locals, {posts: _this.raw_content, tags: calcTags(_this.raw_content)}));
   fs.writeFile(path.join(_this.deploy_path, 'tags', 'index.html'), buff, function(err){
     if (err) logger.error(err);
-  })
+  });
 
 
   // copy static
@@ -117,14 +116,16 @@ function calcTags(posts){
   var tags = {};
 
   posts.forEach(function(post, index){
-    post.tags.forEach(function(tag, index){
-      tag = tag.trim();
-      if (tag in tags){
-        tags[tag] += 1;
-      } else {
-        tags[tag] = 1;
-      }
-    });
+    if (post.tags){
+      post.tags.forEach(function(tag, index){
+        tag = tag.trim();
+        if (tag in tags){
+          tags[tag] += 1;
+        } else {
+          tags[tag] = 1;
+        }
+      });
+    }
   });
 
   return tags;
