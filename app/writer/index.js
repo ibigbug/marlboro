@@ -73,8 +73,9 @@ function write(){
 
 
   // write tag
-  buff = fn(update(locals, {posts: _this.raw_content, tags: calcTags(_this.raw_content)}));
-  fs.writeFile(path.join(_this.deploy_path, 'tags', 'index.html'), buff, function(err){
+  buff = fn(update(locals, {posts: this.raw_content, tags: calcTags(_this.raw_content)}));
+  mkdir.sync(path.join(this.deploy_path, 'tags'));
+  fs.writeFile(path.join(this.deploy_path, 'tags', 'index.html'), buff, function(err){
     if (err) logger.error(err);
   });
 
