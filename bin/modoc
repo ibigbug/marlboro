@@ -1,0 +1,3 @@
+#!/usr/bin/env node
+var site = require('../lib/site');
+site.run();
