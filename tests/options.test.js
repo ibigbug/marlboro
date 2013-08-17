@@ -11,11 +11,14 @@ describe('site', function () {
     it('should have options', function () {
       site.should.be.a('object').and.have.property('options');
     });
-  });
 
-  describe('options', function () {
     it('should have some keys', function () {
-      site.options.should.have.keys(['conf_file', 'source_dir', 'output_dir', 'writers', 'author', 'site']);
+      site.options.should.have.keys(['source_dir', 'output_dir', 'writers', 'author', 'site']);
+    });
+
+    it('can load conf from specific file', function () {
+      site.loadConf('./test/data/conf.json');
+      site.options.author.should.equal('ibigbug');
     });
   });
 });

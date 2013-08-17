@@ -1,3 +1,10 @@
 #!/usr/bin/env node
+var modoc = require('commander');
 var site = require('../lib/site');
-site.run();
+
+modoc
+  .version(site.version)
+  .parse(process.argv);
+
+site.build();
+console.log(site);

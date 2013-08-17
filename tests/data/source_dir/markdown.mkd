@@ -1,0 +1,12 @@
+# title
+
+- date: 1970-01-01
+
+- tags: some, tags
+
+- folder:test
+
+- status: public
+------
+
+content
