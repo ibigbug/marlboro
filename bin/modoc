@@ -7,4 +7,3 @@ modoc
   .parse(process.argv);
 
 site.build();
-console.log(site);

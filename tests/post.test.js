@@ -10,7 +10,7 @@ describe('post', function () {
 
   describe('fromFile', function () {
     it('was parsed regularly', function () {
-      post.should.have.keys('headers', 'body');
+      post.should.have.keys('headers', 'body', 'filepath');
     });
 
     it('has title', function () {

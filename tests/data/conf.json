@@ -1,4 +1,6 @@
 {
   "source_dir": "./tests/data/source_dir",
-  "author": "ibigbug"
+  "ns": {
+    "author": "ibigbug"
+  }
 }
