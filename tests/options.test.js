@@ -13,7 +13,7 @@ describe('site', function () {
     });
 
     it('should have some keys', function () {
-      site.options.should.have.keys(['source_dir', 'output_dir', 'writers', 'theme', 'ns']);
+      site.options.should.have.keys(['source_dir', 'output_dir', 'writers', 'theme', 'debug', 'ns']);
     });
 
     it('can load conf from specific file', function () {

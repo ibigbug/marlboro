@@ -1,5 +1,6 @@
 {
   "source_dir": "./tests/data/source_dir",
+  "debug": true,
   "ns": {
     "author": "ibigbug"
   }
