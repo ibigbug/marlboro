@@ -1,9 +1,29 @@
 #!/usr/bin/env node
 var modoc = require('commander');
 var site = require('../lib/site');
+var log = require('../lib/tools/log');
 
 modoc
   .version(site.version)
+  .option('-f, --force', 'to destroy cache and rebuild all')
   .parse(process.argv);
 
+log.info('Modoc ' + site.version);
+console.log();
+
+if (modoc.force) {
+  log.help('    Destroying cache');
+  site.cache.destroy();
+}
+
+var now = (new Date()).getSeconds();
+
+log.help('    Start building...');
 site.build();
+
+console.log();
+log.info('Build finished');
+
+var end = (new Date()).getSeconds();
+
+log.warn('Using ' + (end - now) + ' seconds');

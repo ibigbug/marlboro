@@ -8,12 +8,12 @@ describe('cache', function () {
   });
 
   it('can set', function () {
-    cache.set('./tests/data/conf.json');
-    fs.existsSync('./.cache/tests/data/conf.json').should.be.true;
+    cache.set('./tests/data/modoc.json');
+    fs.existsSync('./.cache/tests/data/modoc.json').should.be.true;
   });
 
   it('can get', function () {
-    cache.get('./tests/data/conf.json').should.include('tests/data/conf.json');
+    cache.get('./tests/data/modoc.json').should.include('tests/data/modoc.json');
   });
 
   it('can destroy', function () {

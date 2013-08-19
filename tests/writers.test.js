@@ -6,7 +6,7 @@ describe('site', function () {
     site.build();
   });
 
-  describe('writePosts', function () {
+  describe('writers', function () {
     it('has load writer', function () {
       site.should.have.property('writers');
       site.writers.length.should.above(0);

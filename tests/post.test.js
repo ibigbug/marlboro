@@ -4,7 +4,7 @@ var Post = require('../lib/tools/post');
 
 describe('post', function () {
   before(function () {
-    var p = new Post('./tests/data/source_dir/markdown.mkd');
+    var p = new Post('./tests/data/source_dir/mk.mkd');
     post = p.fromFile();
   });
 
