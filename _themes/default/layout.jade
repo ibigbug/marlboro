@@ -1,13 +1,18 @@
 !!!5
 html(lang="en")
     head
-        title= Test
-
+        title= ns.sitename
+        link(rel="stylesheet", href="/style.css")
+        meta(name="viewport", content="initial-scale=1.0, maximum-scale=1.0, user-scale=noe, width=device-width")
     body
-        #header
-            header.inner-header
-        #wrapper
-            div.inner-wrapper
-                block main
-        #footer
-            footer.inner-footer
+        .header
+            .inner-header
+                a#logo(href="/", title="Back to home") Modoc
+                sub description
+        .body
+            .sidebar
+                block sidebar
+            .content
+                block content
+        .footer
+            .inner-footer footer here
