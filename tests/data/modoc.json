@@ -1,5 +1,6 @@
 {
   "source_dir": "./tests/data/source_dir",
+  "permlink": "{{ folder }}/{{ date }}.html",
   "debug": true,
   "ns": {
     "author": "ibigbug"
