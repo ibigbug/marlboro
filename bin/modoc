@@ -6,6 +6,7 @@ var log = require('../lib/tools/log');
 modoc
   .version(site.version)
   .option('-f, --force', 'to destroy cache and rebuild all')
+  .option('-s, --server', 'to start a local server for preview')
   .parse(process.argv);
 
 log.info('Modoc ' + site.version);
@@ -16,14 +17,21 @@ if (modoc.force) {
   site.cache.destroy();
 }
 
-var now = (new Date()).getSeconds();
+if (modoc.server) {
+  require('../lib/tools/server');
+}
 
-log.help('    Start building...');
-site.build();
+else {
 
-console.log();
-log.info('Build finished');
+  var now = (new Date()).getSeconds();
 
-var end = (new Date()).getSeconds();
+  log.help('    Start building...');
+  site.build();
 
-log.warn('Using ' + (end - now) + ' seconds');
+  console.log();
+  log.info('Build finished');
+
+  var end = (new Date()).getSeconds();
+
+  log.warn('Using ' + (end - now) + ' seconds');
+}
